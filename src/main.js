@@ -10,7 +10,7 @@
       }
 
       indieConfigFrame = document.createElement('iframe');
-      indieConfigFrame.src = 'web+indieconfig:load';
+      indieConfigFrame.src = 'web+indie:load';
       document.getElementsByTagName('body')[0].appendChild(indieConfigFrame);
       indieConfigFrame.style.display = 'none';
 
