@@ -49,7 +49,7 @@
           label = 'Post';
         }
         this.innerHTML = '<a href="#"></a>';
-        this.childNodes[0].textContent = this.title || (this.do === 'reply' ? 'Reply' : 'Unknown');
+        this.childNodes[0].textContent = this.title || label;
       },
       inserted: function() {},
       removed: function() {},
