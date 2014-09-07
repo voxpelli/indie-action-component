@@ -57,11 +57,11 @@
     }, 
     events: { 
       'click:delegate(a)' : function (e) {
-        if (this.do !== 'reply' && this.do !== 'post') {
+        var elem = this.parentNode;
+        if (elem.nodeName !== 'INDIE-ACTION' || (elem.do !== 'reply' && elem.do !== 'post')) {
           return;
         }
         e.preventDefault();
-        var elem = this.parentNode;
         var doTheAction = function () {
           var href;
 
