@@ -39,6 +39,15 @@
     extends: 'a',
     lifecycle: {
       created: function() {
+        if (this.do !== 'reply' && this.do !== 'post') {
+          return;
+        }
+        var label;
+        if (this.do === 'reply') {
+          label = 'Reply';
+        } else if (this.do === 'post') {
+          label = 'Post';
+        }
         this.innerHTML = '<a href="#"></a>';
         this.childNodes[0].textContent = this.title || (this.do === 'reply' ? 'Reply' : 'Unknown');
       },
@@ -48,12 +57,15 @@
     }, 
     events: { 
       'click:delegate(a)' : function (e) {
+        if (this.do !== 'reply' && this.do !== 'post') {
+          return;
+        }
         e.preventDefault();
         var elem = this.parentNode;
         var doTheAction = function () {
           var href;
 
-          if (this.do === 'reply' && indieConfig.reply) {
+          if ((this.do === 'reply' || this.do === 'post') && indieConfig.reply) {
             href = indieConfig.reply;
           }
 
@@ -62,9 +74,7 @@
           }
 
           if (href) {
-            href += href.indexOf('?') === -1 ? '?' : '&';
-            href += 'url=' + encodeURIComponent(window.location.href);
-            window.location = href;
+            window.location = href.replace('{url}', encodeURIComponent(this.with || window.location.href));
           }
         };
         var waitForConfig = function () {
