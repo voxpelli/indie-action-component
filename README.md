@@ -8,7 +8,7 @@ A copy of X-Tags itself can be found in `demo/x-tag-components.js`, but should p
 
 ### To configure your reply endpoint for use with this
 
-First do `navigator.registerProtocolHandler('web+indie', '/?url=%s', 'IndieWeb')` somewhere to register your site.
+First do `navigator.registerProtocolHandler('web+action', '/?url=%s', 'IndieWeb')` somewhere to register your site.
 
 Then on the site registered as '/?url=%s' add your configuration like:
 
@@ -19,7 +19,7 @@ Then on the site registered as '/?url=%s' add your configuration like:
       }), '*');
     }
 
-That code will send the configuration to the parent window when its loaded using an iframe. The iframe will point to `web+indie:load` which will auto-resolve to your site when loaded.
+That code will send the configuration to the parent window when its loaded using an iframe. The iframe will point to `web+action:load` which will auto-resolve to your site when loaded.
 
 ### Live on
 
